@@ -33,7 +33,7 @@ class Home extends React.Component {
     console.log(this.state);
     let graph = null;
     if (this.state.data !== null) {
-      graph = <Graph data={this.state.data} />;
+      graph = <Graph key={JSON.stringify(this.state.data)} data={this.state.data} />;
     }
     return (
       <div className={s.root}>
