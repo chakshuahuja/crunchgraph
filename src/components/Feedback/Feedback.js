@@ -29,7 +29,7 @@ class Feedback extends React.Component {
           <a
             className={s.link}
             href="https://github.com/kriasoft/react-starter-kit/issues/new"
-          >Fuck yourself</a>
+          >Visuals speak louder than text</a>
         </div>
       </div>
     );

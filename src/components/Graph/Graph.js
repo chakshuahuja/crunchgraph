@@ -3,28 +3,68 @@ import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import vis from 'vis';
 
 import s from './Graph.css';
-
-
+const options = {
+  groups: {
+    usergroups: {
+      shape: 'icon',
+      icon: {
+        face: 'Ionicons',
+        code: '\uf47c',
+        size: 50,
+        color: '#57169a',
+      }
+    },
+    users: {
+      shape: 'icon',
+      icon: {
+        face: 'Ionicons',
+        code: '\uf47e',
+        size: 50,
+        color: '#aa00ff'
+      }
+    }
+  }
+};
+const rel_color={"WORKS": "red", "COMPETITOR": "green"};
 class Graph extends React.Component {
   componentDidMount(): void {
-    const { data: dumpData } = this.props;
-//    const {nodes, relationships} = dumpData;
-    const nodes = new vis.DataSet(dumpData.nodes);
+    const { data: dump_data } = this.props;
+    const nods = dump_data.nodes.map(n => {
+      const t =  ({id: n.id, label: n.labels[0], properties: n.properties});
+      if (t.label ==='Person') {
+        t.group = 'users';
+        return t;
+      }
+      if (t.label = 'Organization') {
+        t.shape  = 'icon';
+        t.icon = { face: 'Ionicons',code: '\uf276',  size: 50, color: '#f0a30a'}
+        return t;
+      }
+
+    });
+
+    console.log(nods);
+    const rels = dump_data.relationships.map(r => ({from: Number(r.startNode), to: Number(r.endNode), label: r.type, width: 5, color:{color:rel_color[r.type]},  properties: r.properties}));
 
     // create an array with edges
-    const edges = new vis.DataSet([
-      { from: 1, to: 3 },
-      { from: 1, to: 2 },
-      { from: 2, to: 4 },
-      { from: 2, to: 5 },
-    ]);
+    const nodes = new vis.DataSet(nods);
+    const edges = new vis.DataSet(rels);
     const data = {
       nodes,
       edges,
     };
-    const options = {};
+    // const options = {};
     // eslint-disable-next-line no-unused-vars
     const network = new vis.Network(this.container, data, options);
+    network.on("click", ((NODES) => function (params) {
+        params.event = "[original event]";
+        const nodeId = params.nodes[0];
+        const clickedNode = NODES.filter(n => n.id === nodeId)[0];
+        document.getElementById('node-selected').innerHTML = '<h3>Detailed information:</h3>' +
+        'facebook_url:<a href="' + clickedNode.properties.facebook_url + '">'+ clickedNode.properties.facebook_url + '</a>' +
+        '<br />cb_url: <a href="' + clickedNode.properties.cb_url+ '">' + clickedNode.properties.cb_url + '</a>';
+        //JSON.stringify(clickedNode, null, 4);
+      })(nods));
   }
   container: null;
   render() {

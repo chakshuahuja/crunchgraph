@@ -16,6 +16,11 @@ import s from './Sidebar.css';
 
 const infoBoxStyle = {
   color: 'blue',
+  borderTop: '3px solid #b3d4fc',
+  paddingLeft: '12px',
+  marginTop: '10px',
+  fontSize: '12px',
+  height: '400px',
 };
 
 class Sidebar extends React.Component {
@@ -51,7 +56,7 @@ class Sidebar extends React.Component {
           ))}
         <button onClick={this.find} value="Find">Find< /button>
         <div><button onClick={this.addMore}>+</button></div>
-        <div className="node-selected-info" style={infoBoxStyle}>Information of node selected</div>
+        <div className="node-selected-info" id="node-selected" style={infoBoxStyle}>Information of node selected</div>
       </div>
     );
   }
