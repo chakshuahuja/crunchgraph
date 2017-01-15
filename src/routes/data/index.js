@@ -11,21 +11,40 @@ const db = new neo4j.GraphDatabase({
 const query = 'MATCH (o:Organization {company_name:{company_name}})' +
   '-[r:ACQUIRED]->(a) return r,a';
 
+router.get('/nodes', (req, res): void => {
+  const { ids = [] } = req.query;
+
+  if (!ids.length || !ids.map) {
+    res.json({});
+    return;
+  }
+  const queries = ids.map(id => ({
+    query: 'MATCH (n) WHERE ID(n) = {id} return n',
+    params: { id: Number(id) },
+  }));
+  db.cypher({ queries }, (err, results) => {
+    res.json(results.map(r => (r.length ? r[0].n : null)));
+  });
+});
+
+
 router.get('/', (req, res) => {
+  const cb = (err, results) => {
+    if (err) throw err;
+    res.json({
+      status: 'Okay',
+      results,
+    });
+  };
   db.cypher(
     {
       query,
       params: { company_name: 'Facebook' },
     },
-    (err, results) => {
-      if (err) throw err;
-      // results.forEach(r => console.log(r.p.relationships[0]));
-      res.json({
-        status: 'Okay',
-        results,
-      });
-    },
+    cb,
   );
+
+  res.send('OK');
 });
 
 export default router;
