@@ -11,16 +11,23 @@ import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Sidebar.css';
 
+const infoBoxStyle = {
+  color: 'blue',
+};
+
 class Sidebar extends React.Component {
   render() {
     return (
       <div className={s.root}>
         <form action="">
-          Enter source node:<input type="text" name="company1" /><br />
-          Enter destination node:<input type="text" name="company2" /><br />
-          <input type="submit" value="Find" />
-        </form>
+          Enter source node:< br />
+          <input type="text" name="company1" /><br />
+          Enter destination node:< br />
+          <input type="text" name="company2" /><br />
+          <button type="submit" value="Find">Find< /button>
+        < /form>
         <div><button>+</button></div>
+        <div className="node-selected-info" style={infoBoxStyle}>Information of node selected</div>
       </div>
     );
   }

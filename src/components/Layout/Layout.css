@@ -186,6 +186,7 @@ textarea {
 
 .mainview {
   position: absolute;
-  left: 130px;
+
+  /*  left: 130px; */
   width: 100%;
 }
