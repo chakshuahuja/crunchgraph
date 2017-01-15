@@ -27,6 +27,7 @@ import passport from './core/passport';
 import models from './data/models';
 import schema from './data/schema';
 import routes from './routes';
+import dataRoutes from './routes/data';
 import assets from './assets'; // eslint-disable-line import/no-unresolved
 import { port, auth } from './config';
 
@@ -83,11 +84,8 @@ app.use('/graphql', expressGraphQL(req => ({
   pretty: process.env.NODE_ENV !== 'production',
 })));
 
-app.get('/data', (req, res) => {
-  res.json({
-    status: 'Okay',
-  });
-});
+app.use('/data', dataRoutes);
+
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------
