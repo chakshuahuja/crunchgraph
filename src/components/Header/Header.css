@@ -14,7 +14,7 @@
 }
 
 .root {
-  background: #373277;
+  background: url(https://thumbs.dreamstime.com/z/global-network-digital-abstract-background-vector-illustration-49593762.jpg);
   color: #fff;
 }
 
@@ -25,9 +25,10 @@
 }
 
 .brand {
-  color: color(var(--brand-color) lightness(+10%));
   text-decoration: none;
-  font-size: 1.75em; /* ~28px */
+  font-size: 2.75em; /* ~28px */
+  color: white;
+  font-weight: bold;
 }
 
 .brandTxt {

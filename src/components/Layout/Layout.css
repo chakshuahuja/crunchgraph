@@ -179,3 +179,13 @@ textarea {
     page-break-after: avoid;
   }
 }
+
+.leftright {
+  height: 500px;
+}
+
+.mainview {
+  position: absolute;
+  left: 130px;
+  width: 100%;
+}

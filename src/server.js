@@ -83,6 +83,11 @@ app.use('/graphql', expressGraphQL(req => ({
   pretty: process.env.NODE_ENV !== 'production',
 })));
 
+app.get('/data', (req, res) => {
+  res.json({
+    status: 'Okay',
+  });
+});
 //
 // Register server-side rendering middleware
 // -----------------------------------------------------------------------------

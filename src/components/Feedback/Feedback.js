@@ -19,12 +19,17 @@ class Feedback extends React.Component {
           <a
             className={s.link}
             href="https://gitter.im/kriasoft/react-starter-kit"
-          >Ask a question</a>
+          >Explore Relationships</a>
           <span className={s.spacer}>|</span>
           <a
             className={s.link}
             href="https://github.com/kriasoft/react-starter-kit/issues/new"
-          >Report an issue</a>
+          >Find Similarity</a>
+          <span className={s.spacer}>|</span>
+          <a
+            className={s.link}
+            href="https://github.com/kriasoft/react-starter-kit/issues/new"
+          >Fuck yourself</a>
         </div>
       </div>
     );

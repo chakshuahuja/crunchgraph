@@ -13,6 +13,7 @@ import s from './Layout.css';
 import Header from '../Header';
 import Feedback from '../Feedback';
 import Footer from '../Footer';
+import Sidebar from '../Sidebar/Sidebar.js';
 
 class Layout extends React.Component {
   static propTypes = {
@@ -23,8 +24,11 @@ class Layout extends React.Component {
     return (
       <div>
         <Header />
-        {this.props.children}
         <Feedback />
+        <div className={s.leftright}>
+          <span><Sidebar /></span>
+          <span className={s.mainview}>{this.props.children}</span>
+        </div>
         <Footer />
       </div>
     );
