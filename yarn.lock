@@ -4320,6 +4320,13 @@ negotiator@0.6.1:
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/negotiator/-/negotiator-0.6.1.tgz#2b327184e8992101177b28563fb5e7102acd0ca9"
 
+neo4j@^2.0.0-RC2:
+  version "2.0.0-RC2"
+  resolved "https://registry.yarnpkg.com/neo4j/-/neo4j-2.0.0-RC2.tgz#bd328247d0a97b1b16ccb997a694a86ae8620a41"
+  dependencies:
+    request "^2.27.0"
+    underscore "1.7.x"
+
 node-fetch@^1.0.1, node-fetch@^1.6.3:
   version "1.6.3"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-1.6.3.tgz#dc234edd6489982d58e8f0db4f695029abcd8c04"
@@ -5673,7 +5680,7 @@ repeating@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/repeating/-/repeating-3.0.0.tgz#f4c376fdd2015761f6f96f4303b1224d581e802f"
 
-request@2, request@^2.61.0, request@^2.79.0:
+request@2, request@^2.27.0, request@^2.61.0, request@^2.79.0:
   version "2.79.0"
   resolved "https://registry.yarnpkg.com/request/-/request-2.79.0.tgz#4dfe5bf6be8b8cdc37fcf93e04b65577722710de"
   dependencies:
