@@ -9,24 +9,48 @@
 
 import React from 'react';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
+import Arbiter from 'promissory-arbiter';
+
 import s from './Sidebar.css';
+
 
 const infoBoxStyle = {
   color: 'blue',
 };
 
 class Sidebar extends React.Component {
+  state = { nodes: ['530896', '623209'] }
+  onType = (e, i) => {
+    const nodes = [...this.state.nodes];
+    nodes[i] = e.target.value;
+    this.setState({ nodes });
+  }
+  addMore = () => {
+    const nodes = [...this.state.nodes];
+    nodes.push('');
+    this.setState({ nodes });
+  }
+
+  find = () => {
+    const nodes = [...this.state.nodes];
+    const url = `http://localhost:3001/data/shortestPaths?${nodes.map(n => `ids[]=${n}`).join('&')}`;
+    fetch(url)
+    .then(r => r.json())
+    .then(d => Arbiter.publish('data_fetched', d));
+  }
+
   render() {
+    const that = this;
     return (
       <div className={s.root}>
-        <form action="">
-          Enter source node:< br />
-          <input type="text" name="company1" /><br />
-          Enter destination node:< br />
-          <input type="text" name="company2" /><br />
-          <button type="submit" value="Find">Find< /button>
-        < /form>
-        <div><button>+</button></div>
+        {this.state.nodes.map((n, i) => (
+          <div key={i}>
+              Enter node:< br />
+            <input type="text" name="id[]" value={n} onChange={(e) => that.onType(e, i)} /><br />
+          </div>
+          ))}
+        <button onClick={this.find} value="Find">Find< /button>
+        <div><button onClick={this.addMore}>+</button></div>
         <div className="node-selected-info" style={infoBoxStyle}>Information of node selected</div>
       </div>
     );

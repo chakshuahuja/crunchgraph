@@ -8,12 +8,13 @@
  */
 
 import React, { PropTypes } from 'react';
+import Arbiter from 'promissory-arbiter';
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './Home.css';
 import Graph from '../../components/Graph/Graph';
 
-
 class Home extends React.Component {
+
   static propTypes = {
     news: PropTypes.arrayOf(PropTypes.shape({
       title: PropTypes.string.isRequired,
@@ -21,12 +22,23 @@ class Home extends React.Component {
       contentSnippet: PropTypes.string,
     })).isRequired,
   };
+  state = { data: null }
 
+  componentDidMount() {
+    Arbiter.subscribe('data_fetched', d => {
+      this.setState({ data: d });
+    });
+  }
   render() {
+    console.log(this.state);
+    let graph = null;
+    if (this.state.data !== null) {
+      graph = <Graph data={this.state.data} />;
+    }
     return (
       <div className={s.root}>
         <div className={s.container}>
-          <Graph />
+          {graph}
         </div>
       </div>
     );

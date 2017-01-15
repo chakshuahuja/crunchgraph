@@ -5352,6 +5352,10 @@ promise@^7.1.1:
   dependencies:
     asap "~2.0.3"
 
+promissory-arbiter@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/promissory-arbiter/-/promissory-arbiter-1.0.1.tgz#0306d7380906d223bcf4561f14ac540be5c6470d"
+
 propagating-hammerjs@^1.4.6:
   version "1.4.6"
   resolved "https://registry.yarnpkg.com/propagating-hammerjs/-/propagating-hammerjs-1.4.6.tgz#fed00e9b00767ffd42d14f5b531bc493eb672e37"
