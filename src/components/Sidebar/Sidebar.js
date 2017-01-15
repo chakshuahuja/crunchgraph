@@ -15,12 +15,12 @@ class Sidebar extends React.Component {
   render() {
     return (
       <div className={s.root}>
-        <div>Sidebar</div>
-        <div>Sidebar</div>
-        <div>Sidebar</div>
-        <div>Sidebar</div>
-        <div>Sidebar</div>
-        <div>Sidebar</div>
+        <form action="">
+          Enter source node:<input type="text" name="company1" /><br />
+          Enter destination node:<input type="text" name="company2" /><br />
+          <input type="submit" value="Find" />
+        </form>
+        <div><button>+</button></div>
       </div>
     );
   }
