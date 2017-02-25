@@ -15,6 +15,7 @@ import s from './Sidebar.css';
 
 
 const infoBoxStyle = {
+  overflow: 'auto',
   color: 'blue',
   borderTop: '3px solid #b3d4fc',
   paddingLeft: '12px',

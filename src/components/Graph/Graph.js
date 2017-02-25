@@ -25,7 +25,7 @@ const options = {
     },
   },
 };
-const rel_color = { WORKS: 'red', COMPETITOR: 'green', INVESTED_IN: 'black', ACQUIRED: 'blue' };
+const rel_color = { WORKS: '#a00', COMPETITOR: 'green', INVESTED_IN: 'black', ACQUIRED: 'blue' };
 class Graph extends React.Component {
   componentDidMount(): void {
     const { data: dump_data } = this.props;
@@ -45,7 +45,7 @@ class Graph extends React.Component {
     });
 
     console.log(nods);
-    const rels = dump_data.relationships.map(r => ({ from: Number(r.startNode), to: Number(r.endNode), arrows: 'to', label: r.type, width: 5, color: { color: rel_color[r.type] }, properties: r.properties }));
+    const rels = dump_data.relationships.map(r => ({ from: Number(r.startNode), length: 500, to: Number(r.endNode), arrows: 'to', label: r.type, width: 2, color: { color: rel_color[r.type] }, properties: r.properties }));
 
     // create an array with edges
     const nodes = new vis.DataSet(nods);
@@ -61,10 +61,10 @@ class Graph extends React.Component {
       params.event = '[original event]';
       const nodeId = params.nodes[0];
       const clickedNode = NODES.filter(n => n.id === nodeId)[0];
-      document.getElementById('node-selected').innerHTML = `${'<h3>Detailed information:</h3>' +
-        'facebook_url:<a href="'}${clickedNode.properties.facebook_url}">${clickedNode.properties.facebook_url}</a>` +
-        `<br />cb_url: <a href="${clickedNode.properties.cb_url}">${clickedNode.properties.cb_url}</a>`;
-        // JSON.stringify(clickedNode, null, 4);
+      document.getElementById('node-selected').innerHTML = `<h3>Detailed information:</h3>${
+//        'facebook_url:<a href="'}${clickedNode.properties.facebook_url}">${clickedNode.properties.facebook_url}</a>` +
+//        `<br />cb_url: <a href="${clickedNode.properties.cb_url}">${clickedNode.properties.cb_url}</a>`;
+         JSON.stringify(clickedNode, null, 4)}`;
     })(nods));
   }
   container: null;
