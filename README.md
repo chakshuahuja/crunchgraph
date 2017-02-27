@@ -5,7 +5,7 @@ A proof of concept for showing visualization and relationships between any two o
 This was the winning entry in the Crunchbase@Pear hackathon.
 
 #### P.S.: This project is built on top of React Starter Kit cloned from https://github.com/kriasoft/react-starter-kit
-and data provided by crunchbase APIs (https://data.crunchbase.com/docs/using-the-api)
+#### and data provided by crunchbase APIs (https://data.crunchbase.com/docs/using-the-api)
 
 ### Contributors ###
 * Chakshu https://github.com/chakshuahuja
